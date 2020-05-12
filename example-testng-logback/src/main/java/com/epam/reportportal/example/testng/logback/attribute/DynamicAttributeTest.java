@@ -36,12 +36,12 @@ public class DynamicAttributeTest {
 	private static final String SAUCELABS_ACCESS_KEY_PARAMETER = "SAUCE_ACCESS_KEY";
 
 	//your username
-	private static final String username = null;
+	private static final String USERNAME = null;
 	//your access key
-	private static final String accessKey = null;
+	private static final String ACCESS_KEY = null;
 
 	//EU central
-	private static final String sauceDataCenter = "ondemand.eu-central-1.saucelabs.com";
+	private static final String SAUCE_DATA_CENTER = "ondemand.eu-central-1.saucelabs.com";
 
 	private RemoteWebDriver driver;
 
@@ -50,8 +50,8 @@ public class DynamicAttributeTest {
 		/**
 		 * In this section, we will configure our SauceLabs credentials in order to run our tests on saucelabs.com
 		 */
-		String sauceUserName = ofNullable(username).orElseGet(() -> getParameter(SAUCELABS_USERNAME_PARAMETER));
-		String sauceAccessKey = ofNullable(accessKey).orElseGet(() -> getParameter(SAUCELABS_ACCESS_KEY_PARAMETER));
+		String sauceUserName = ofNullable(USERNAME).orElseGet(() -> getParameter(SAUCELABS_USERNAME_PARAMETER));
+		String sauceAccessKey = ofNullable(ACCESS_KEY).orElseGet(() -> getParameter(SAUCELABS_ACCESS_KEY_PARAMETER));
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -64,7 +64,7 @@ public class DynamicAttributeTest {
 		capabilities.setCapability("name", "shouldOpenSafari");
 
 		//create a new Remote driver that will allow your test to send commands to the Sauce Labs grid so that Sauce can execute your tests
-		driver = new RemoteWebDriver(new URL("https://" + sauceDataCenter + "/wd/hub"), capabilities);
+		driver = new RemoteWebDriver(new URL("https://" + SAUCE_DATA_CENTER + "/wd/hub"), capabilities);
 	}
 
 	private String getParameter(String parameterName) {
